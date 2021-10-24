@@ -1,5 +1,9 @@
+import json
+
 from fastapi import APIRouter
 import requests
+
+from api.utils import data_dir
 
 
 router = APIRouter()
@@ -16,6 +20,8 @@ def get_gorest_users():
     return res.json()
 
 
-@router.get("")
-def a():
-    pass
+@router.get("/local")
+def get_local_json():
+    with open(data_dir / "test_data.json", "r") as f:
+        data = json.load(f)
+    return data
