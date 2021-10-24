@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+
+message Record {
+    int64 _id = 1;
+    string time = 2;
+    string name = 3;
+    float value = 4;
+}
+
+message GetLatestResponse {
+    Record data = 1;
+}
+
+message GetRecordsResponse {
+    repeated Record data = 1;
+}
+
+message GetLatestRequest {
+
+}
+
+message GetRecordsRequest {
+    enum Name {
+        ALL = 0;
+        P = 1;
+        Q = 2;
+        V = 3;
+    }
+    Name name = 1;      // Which type of measurement should be returned
+    int32 limit = 2;    // Specify how many records shall be returned (default 'all' to be implementedin call method)
+}
+
+service StationDataService {
+    // Receive most recent record
+    rpc GetLatest(GetLatestRequest) returns (GetLatestResponse) {}
+    // Receive records
+    rpc GetRecords(GetRecordsRequest) returns (GetRecordsResponse) {}
+}
