@@ -1,0 +1,5 @@
+#!/bin/sh
+
+source venv/bin/activate
+
+python -m grpc_tools.protoc -I../protos --python_out=src --grpc_python_out=src ../protos/station_data.proto
