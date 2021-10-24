@@ -1,16 +1,9 @@
-from functools import lru_cache
-
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from uvicorn import run
 
 from api.api import api_router
-from core.config import Settings
-
-
-@lru_cache
-def get_settings():
-    return Settings()
+from core.config import get_settings
 
 
 app = FastAPI()
