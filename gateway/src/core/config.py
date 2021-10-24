@@ -6,3 +6,5 @@ class Settings(BaseSettings):
 
     server_host: str = "0.0.0.0"
     server_port: int = 8050
+
+    api_v1_str: str = ""
