@@ -3,6 +3,7 @@ from functools import lru_cache
 from fastapi import FastAPI
 import uvicorn
 
+from api.api import api_router
 from core.config import Settings
 
 
@@ -17,6 +18,10 @@ app = FastAPI()
 @app.get("/", include_in_schema=False)
 async def root():
     return f"{get_settings().app_name} server started."
+
+
+# Endpoint routing
+app.include_router(api_router, prefix=get_settings().api_v1_str)
 
 
 if __name__ == "__main__":
