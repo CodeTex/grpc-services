@@ -14,9 +14,9 @@ def get_settings():
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 async def root():
-    return {"message": "Hello World"}
+    return f"{get_settings().app_name} server started."
 
 
 if __name__ == "__main__":
