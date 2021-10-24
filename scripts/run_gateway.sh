@@ -17,6 +17,3 @@ if [ -n "$1"] && ["$1" == "-r" ]; then
 fi
 # start FastAPI server
 uvicorn gateway.src.main:app "$FLAG"
-
-deactivate
-cd $SCRIPTPATH
